@@ -4,7 +4,7 @@ rm -rf .repo & # lets remove unnecessary things, so that no storage issue can oc
 
 # Normal build steps
 . build/envsetup.sh
-lunch arrow_lava-userdebug
+lunch komodo_lava-userdebug
 export SELINUX_IGNORE_NEVERALLOWS=true
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
@@ -24,12 +24,12 @@ make_metalava(){
 }
 
 make_rom(){
-	m bacon -j16 
-	zip=$(up out/target/product/lava/Arrow-v11.0*zip)
+	masak komodo -j16 
+	zip=$(up out/target/product/lava/KomodoOS-lava*zip)
 	echo " "
 	echo "$zip"
 }
 
 make_metalava
 make_rom &
-sleep 4800 && kill "$!"
+sleep 4795 && kill "$!"
