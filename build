@@ -4,7 +4,7 @@ rm -rf .repo & # lets remove unnecessary things, so that no storage issue can oc
 
 # Normal build steps
 . build/envsetup.sh
-lunch komodo_lava-userdebug
+lunch styx_lava-userdebug
 export SELINUX_IGNORE_NEVERALLOWS=true
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
@@ -18,13 +18,13 @@ up(){
 }
 
 make_metalava(){
-	mka api-stubs-docs
-	mka system-api-stubs-docs
-	mka test-api-stubs-docs
+	make api-stubs-docs
+	make system-api-stubs-docs
+	make test-api-stubs-docs
 }
 
 make_rom(){
-	masak komodo -j16 
+	m styx-ota -j16 
 	zip=$(up out/target/product/lava/KomodoOS-lava*zip)
 	echo " "
 	echo "$zip"

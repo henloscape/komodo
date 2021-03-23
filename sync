@@ -1,7 +1,7 @@
 #!/bin/bash
 
-MANIFEST=git://github.com/Komodo-OS-Rom/manifest
-BRANCH=11
+MANIFEST=git://github.com/StyxProject/manifest
+BRANCH=R
 
 mkdir -p /tmp/rom
 cd /tmp/rom
