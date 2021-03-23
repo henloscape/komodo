@@ -9,6 +9,7 @@ export SELINUX_IGNORE_NEVERALLOWS=true
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
+sed -i "/BluetoothInstrumentationTests/d" platform_testing/build/tasks/tests/instrumentation_test_list.mk
 ccache -M 20G
 ccache -o compression=true
 ccache -z
@@ -25,7 +26,7 @@ make_metalava(){
 
 make_rom(){
 	m styx-ota -j16 
-	zip=$(up out/target/product/lava/KomodoOS-lava*zip)
+	zip=$(up out/target/product/lava/styxOS*zip)
 	echo " "
 	echo "$zip"
 }
