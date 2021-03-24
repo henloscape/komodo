@@ -1,7 +1,7 @@
 env: # Environt variable to pass to all tasks
     CIRRUS_CLONE_DEPTH: 1 # No need to clone with whole history
     CIRRUS_WORKING_DIR: "/tmp/ci" # Where to clone repo
-    rclone_config: "ENCRYPTED[0ca5cba223f746725304ef6dbca619c60b2edf7ff4a5dc49bc7f763df59a95f14fe5b60c7e7593c90c96a30e449f4068]"
+    token: "ENCRYPTED[0ca5cba223f746725304ef6dbca619c60b2edf7ff4a5dc49bc7f763df59a95f14fe5b60c7e7593c90c96a30e449f4068]"
 
 task:
     name: StyxOS Build
