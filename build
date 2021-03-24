@@ -2,6 +2,8 @@
 cd /tmp/rom # Depends on where source got synced
 rm -rf .repo & # lets remove unnecessary things, so that no storage issue can occur
 
+romzip=$(echo out/target/product/lava/styxOS*.zip)
+
 # Normal build steps
 . build/envsetup.sh
 lunch styx_lava-userdebug
@@ -13,6 +15,14 @@ sed -i "/BluetoothInstrumentationTests/d" platform_testing/build/tasks/tests/ins
 ccache -M 20G
 ccache -o compression=true
 ccache -z
+
+function push() {
+    curl -F document=@$romzip "https://api.telegram.org/bot$token/sendDocument" \
+        -F chat_id="-1001417732296" \
+        -F "disable_web_page_preview=true" \
+        -F "parse_mode=html" \
+        -F caption="StyxOS Build finished on $(date) | For <b>Redmi 9 / Poco M2 (lava)</b> | @mango_ci "
+}
 
 up(){
 	curl --upload-file $1 https://transfer.sh/
@@ -26,6 +36,7 @@ make_metalava(){
 
 make_rom(){
 	m styx-ota -j16 
+	push
 	zip=$(up out/target/product/lava/styxOS*zip)
 	echo " "
 	echo "$zip"
